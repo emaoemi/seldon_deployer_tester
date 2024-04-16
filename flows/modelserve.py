@@ -5,7 +5,7 @@ import prefect
 from prefect import task, flow, tags, get_run_logger
 from kubernetes import client, config
 
-seldon_deployment = """
+"""seldon_deployment =
 apiVersion: machinelearning.seldon.io/v1alpha3
 kind: SeldonDeployment
 metadata:
@@ -47,6 +47,28 @@ spec:
     name: demo
     replicas: 1
 """
+
+seldon_deployment = """
+apiVersion: machinelearning.seldon.io/v1alpha2
+kind: SeldonDeployment
+metadata:
+  name: mlflow
+spec:
+  name: wines
+  predictors:
+    - graph:
+        children: []
+        implementation: MLFLOW_SERVER
+        modelUri: s3://mlflow/0/291cd3e06d1943b4a4ab988419fc4eaa/artifacts/sklearn-model
+        name: classifier
+        parameters:
+        - name: xtype
+          type: STRING
+          value: DataFrame
+      name: default
+      replicas: 1
+"""
+
 
 CUSTOM_RESOURCE_INFO = dict(
     group="machinelearning.seldon.io",
