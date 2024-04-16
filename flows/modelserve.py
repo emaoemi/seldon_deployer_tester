@@ -76,19 +76,19 @@ def deploy_model(model_uri: str, namespace: str = "seldon"):
         logger.info("Deployment created. status='%s'" % resp["status"]["state"])
     except:
         logger.info("Updating existing model")
-        existing_deployment = custom_api.get_namespaced_custom_object(
-            **CUSTOM_RESOURCE_INFO,
-            namespace=namespace,
-            name=dep["metadata"]["name"],
-        )
-        existing_deployment["spec"]["predictors"][0]["graph"]["modelUri"] = model_uri
+        #existing_deployment = custom_api.get_namespaced_custom_object(
+        #    **CUSTOM_RESOURCE_INFO,
+        #    namespace=namespace,
+        #    name=dep["metadata"]["name"],
+        #)
+        #existing_deployment["spec"]["predictors"][0]["graph"]["modelUri"] = model_uri
 
-        resp = custom_api.replace_namespaced_custom_object(
-            **CUSTOM_RESOURCE_INFO,
-            namespace=namespace,
-            name=existing_deployment["metadata"]["name"],
-            body=existing_deployment,
-        )
+        #resp = custom_api.replace_namespaced_custom_object(
+        #    **CUSTOM_RESOURCE_INFO,
+        #    namespace=namespace,
+        #    name=existing_deployment["metadata"]["name"],
+        #    body=existing_deployment,
+        #)
 
 @flow
 def deploy_model_flow(model_uri: str = "Train"):
