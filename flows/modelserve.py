@@ -113,7 +113,7 @@ def deploy_model(model_uri: str, namespace: str = "seldon"):
         )
 
 @flow
-def DeployModel(model_uri: str = "Train"):
+def deploy_model_flow(model_uri: str = "Train"):
       deploy_model(model_uri, namespace="seldon")
 @flow    
 def DeploySecondModel(model_uri: str = "Train"):
