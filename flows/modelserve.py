@@ -9,7 +9,7 @@ seldon_deployment = """
 apiVersion: machinelearning.seldon.io/v1alpha3
 kind: SeldonDeployment
 metadata:
-  name: mlflow
+  name: mlflow_model_dep
 spec:
   name: wines
   predictors:
