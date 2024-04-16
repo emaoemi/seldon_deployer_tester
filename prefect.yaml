@@ -9,7 +9,7 @@ deployments:
   entrypoint: flows/modelserve.py:deploy_model_flow
   #entrypoint: flows/hello_world.py:hello_world
   work_pool:
-    name: minikubeDeployerWorkPool
+    name: minikubeWorkPool
     work_queue_name:
     job_variables: {}
     image: docker.io/prefecthq/prefect:2-latest
