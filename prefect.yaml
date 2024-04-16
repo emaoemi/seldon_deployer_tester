@@ -3,7 +3,7 @@ name: flows2
 prefect-version: 2.16.9
 # deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: seldon_deplyer_tests
+- name: seldon_deployer_tests
   schedule:
 #  entrypoint: flows/hello.py:hello
   entrypoint: flows/modelserve.py:deploy_model_flow
